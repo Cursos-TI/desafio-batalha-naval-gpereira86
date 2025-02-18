@@ -7,6 +7,10 @@
 #define LINHAS 10
 #define COlUNAS 10
 
+#define LINHASHABILIDADES 7
+#define COLUNASHABILIDADES 7
+
+
 void exibirTabuleiro(int tabuleiro[LINHAS][COlUNAS]){
 
     printf("----------------TABULEIRO----------------\n");
@@ -34,24 +38,43 @@ int main() {
 
     int tabuleiro[LINHAS][COlUNAS] = {0};
 
-    tabuleiro[1][0] = 3;
-    tabuleiro[1][1] = 3;
-    tabuleiro[1][2] = 3;
+    int navio1Inicial[2] = {0, 1}, navio2Inicial[2] = {2, 3}; 
+    int tamanhoNavio1 = 3, tamanhoNavio2 = 4;
+     
+    printf(">>> Navio 1 (Horizontal) <<<\n");
+    
+    if ( navio1Inicial[0] >= LINHAS || (navio1Inicial[1] + tamanhoNavio1) >= COlUNAS)
+    {
+        printf("Navio ultrapassa o tabuleiro, não posicionado.\n");
 
-    tabuleiro[2][3] = 3;
-    tabuleiro[3][3] = 3;
-    tabuleiro[4][3] = 3;
+    } else {
+        printf("--- Posicionado nas coordenadas: ---\n");
+        for (int i = 0; i < tamanhoNavio1; i++)
+        {
+            tabuleiro[navio1Inicial[0]][navio1Inicial[1]+i] = 3;
+            printf("Parte do navio posicionado na casa [%d][%d]\n", navio1Inicial[0], navio1Inicial[1] + i);
+        }
+    }
+    
+    
+    printf("\n");
 
-     // Exibindo as coordenadas dos navios
-    printf(">>> Navio 1 (Horizontal) <<<\n--- Posicionado nas coordenadas: ---\n");
-    printf("Parte do navio posicionado na casa [1][0]\n");
-    printf("Parte do navio posicionado na casa [1][1]\n");
-    printf("Parte do navio posicionado na casa [1][2]\n\n");
 
-    printf(">>> Navio 2 (Vertical) <<<\n--- Posicionado nas coordenadas: ---\n");
-    printf("Parte do navio posicionado na casa [2][3]\n");
-    printf("Parte do navio posicionado na casa [3][3]\n");
-    printf("Parte do navio posicionado na casa [4][3]\n\n");
+    printf(">>> Navio 2 (Vertical) <<<\n");
+    if ( (navio2Inicial[0] + tamanhoNavio2) >= LINHAS || navio2Inicial[1] + tamanhoNavio2 >= COlUNAS)
+    {
+        printf("Navio ultrapassa o tabuleiro, não posicionado.\n");
+
+    } else {
+        printf("--- Posicionado nas coordenadas: ---\n");
+        for (int i = 0; i < tamanhoNavio2; i++)
+        {
+            tabuleiro[navio2Inicial[0]+i][navio2Inicial[1]] = 3;
+            printf("Parte do navio posicionado na casa [%d][%d]\n", navio2Inicial[0], navio2Inicial[1] + i);
+        }
+    }
+    printf("\n");
+
     
     exibirTabuleiro(tabuleiro);
 
@@ -61,45 +84,45 @@ int main() {
     // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
     // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
 
-    tabuleiro[1][0] = 3;
-    tabuleiro[1][1] = 3;
-    tabuleiro[1][2] = 3;
-
-    tabuleiro[2][3] = 3;
-    tabuleiro[3][3] = 3;
-    tabuleiro[4][3] = 3;
-
-    tabuleiro[9][3] = 3;
-    tabuleiro[8][4] = 3;
-    tabuleiro[7][5] = 3;
-
-    tabuleiro[5][6] = 3;
-    tabuleiro[6][7] = 3;
-    tabuleiro[7][8] = 3;
-
-     // Exibindo as coordenadas dos navios
-    printf(">>> Navio 1 (Horizontal) <<<\n--- Posicionado nas coordenadas: ---\n");
-    printf("Parte do navio posicionado na casa [1][0]\n");
-    printf("Parte do navio posicionado na casa [1][1]\n");
-    printf("Parte do navio posicionado na casa [1][2]\n\n");
-
-    printf(">>> Navio 2 (Vertical) <<<\n--- Posicionado nas coordenadas: ---\n");
-    printf("Parte do navio posicionado na casa [2][3]\n");
-    printf("Parte do navio posicionado na casa [3][3]\n");
-    printf("Parte do navio posicionado na casa [4][3]\n\n");
+    int inicialNavioDiagonalFrente[2] = {2, 6}, inicialNavioDiagonalTras[2] = {5, 6}; 
+    int tamanhoNavio3 = 3, tamanhoNavio4 = 4;
     
-    printf(">>> Navio 3 (Horizontal) <<<\n--- Posicionado nas coordenadas: ---\n");
-    printf("Parte do navio posicionado na casa [9][3]\n");
-    printf("Parte do navio posicionado na casa [8][4]\n");
-    printf("Parte do navio posicionado na casa [7][5]\n\n");
+    printf("\n>>> Navio 3 (Diagonal para Baixo) <<<\n");
+    if ((inicialNavioDiagonalFrente[0] + tamanhoNavio3)>= LINHAS || (inicialNavioDiagonalFrente[1] + tamanhoNavio3) >= COlUNAS)
+    {
+        printf("Navio ultrapassa o tabuleiro, não posicionado.\n");
+    }
+    else
+    {
+        printf("--- Posicionado nas coordenadas: ---\n");
+        for (int i = 0; i < tamanhoNavio3; i++)
+        {
+            tabuleiro[inicialNavioDiagonalFrente[0]+i][inicialNavioDiagonalFrente[1]+i] = 3;
+            printf("Parte do navio posicionado na casa [%d][%d]\n", inicialNavioDiagonalFrente[0]+i, inicialNavioDiagonalFrente[1]+i);
+        }
+    }
+    printf("\n");
 
-    printf(">>> Navio 4 (Vertical) <<<\n--- Posicionado nas coordenadas: ---\n");
-    printf("Parte do navio posicionado na casa [5][6]\n");
-    printf("Parte do navio posicionado na casa [6][7]\n");
-    printf("Parte do navio posicionado na casa [7][8]\n\n");
+
     
+    printf(">>> Navio 4 (Diagonal para Cima) <<<\n");
+    if ((inicialNavioDiagonalTras[0] - tamanhoNavio4) < 0 || (inicialNavioDiagonalTras[1] - tamanhoNavio4) < 0)
+    {
+        printf("Navio ultrapassa o tabuleiro, não posicionado.\n");
+    }
+    else
+    {
+        printf("--- Posicionado nas coordenadas: ---\n");
+        for (int i = 0; i < tamanhoNavio4; i++)
+        {
+            
+            tabuleiro[inicialNavioDiagonalTras[0]+i][inicialNavioDiagonalTras[1]-i] = 3;
+            printf("Parte do navio posicionado na casa [%d][%d]\n", inicialNavioDiagonalTras[0]-i, inicialNavioDiagonalTras[1]-i);
+        }
+    }
+    printf("\n");
+        
     exibirTabuleiro(tabuleiro);
-
 
 
     // Nível Mestre - Habilidades Especiais com Matrizes
@@ -122,6 +145,87 @@ int main() {
     // 0 0 1 0 0
     // 1 1 1 1 1
     // 0 0 1 0 0
+
+    // Cone:
+    int cone[LINHAS][COlUNAS];
+    int gatilho = 2;
+    int paraGatilho = 0;
+    
+    for (int i = 0; i < LINHAS; i++)
+    {
+        
+
+        for (int j = 0; j< COlUNAS; j++){
+            
+            if (j >= (gatilho - i) && j <= (gatilho + i) && paraGatilho < 3) {
+                printf("1 ");
+                tabuleiro[i][j] = 5;
+            } else {
+                printf("0 ");
+            }                
+            
+        }
+        paraGatilho++;
+        printf("\n");
+    }
+    printf("\n");
+
+    // octaedro:
+    int octaedro[LINHAS][COlUNAS];
+    int centro[2] = {2, 7};
+
+    for (int i = 0; i < LINHAS; i++)
+    {
+        for (int j = 0; j < COlUNAS; j++)
+        {
+          
+            if (j == centro[1] && (i >= (centro[0]-1) && i <= (centro[0] + 1)))
+            {
+                printf("1 ");
+                tabuleiro[i][j] = 5;
+            } else if (i == centro[0] && j != centro[1] && (j >= (centro[1] - 1) && j <= (centro[1] + 1)))
+            {
+                printf("1 ");
+                tabuleiro[i][j] = 5;
+            } else 
+            {
+                printf("0 ");
+            } 
+
+        }
+        printf("\n");
+    }
+    printf("\n");
+
+
+    // Cruz:
+    int cruz[LINHAS][COlUNAS];
+    int centroCruz[2] = {6, 2};
+
+    for (int i = 0; i < LINHAS; i++)
+    {
+        for (int j = 0; j < COlUNAS; j++)
+        {
+          
+            if (j == centroCruz[1] && (i >= (centroCruz[0]-1) && i <= (centroCruz[0] + 1)))
+            {
+                printf("1 ");
+                tabuleiro[i][j] = 5;
+            } else if (i == centroCruz[0] && j != centroCruz[1] && (j >= (centroCruz[1] - 2) && j <= (centroCruz[1] + 2)))
+            {
+                printf("1 ");
+                tabuleiro[i][j] = 5;
+            } else 
+            {
+                printf("0 ");
+            } 
+
+        }
+        printf("\n");
+    }
+    printf("\n");
+
+    exibirTabuleiro(tabuleiro);
 
     return 0;
 }
